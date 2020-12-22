@@ -1,18 +1,55 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="hello">
+
+    <CardOne></CardOne>
+    <CardTwo></CardTwo>   
+    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mapState } from "vuex";
+import CardOne from '@/components/Cardone'
+import CardTwo from '@/components/Cardtwo'
+
 
 export default {
   name: "Home",
+
   components: {
-    HelloWorld
+  CardOne,
+  CardTwo,
+
+  },
+  data() {
+    return {
+      
+    };
+  },
+  mounted() {    this.$store.dispatch("loadPost");
+    
+    
+
+  },
+  computed: {
+    ...mapState(["posts"]),
+   
   }
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/sass/variables/_variables";
+
+a{
+  text-decoration: none;
+  color:$text-color;
+}
+ul,li {
+    list-style: none;   
+
+}
+
+
+
+</style>
